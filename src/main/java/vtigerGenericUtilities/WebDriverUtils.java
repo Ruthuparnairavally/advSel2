@@ -289,14 +289,14 @@ public class WebDriverUtils {
 	 * @param driver
 	 * @param name
 	 * @return
-	 * @throws IOException 
+	 * @throws IOException  
 	 */
 	
 	public String takeScreenshot(WebDriver driver, String name) throws IOException
 	{
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		File dest = new File(IConstant.photo+name+".png");
+		File dest = new File("./photos/"+name+".png");
 		FileUtils.copyFile(src, dest);
 		return dest.getAbsolutePath();
 	}

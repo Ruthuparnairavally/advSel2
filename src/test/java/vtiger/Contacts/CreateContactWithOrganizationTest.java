@@ -16,66 +16,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import vtigerGenericUtilities.BaseClass;
 import vtigerGenericUtilities.DatabaseUtils;
 import vtigerGenericUtilities.ExcelUtils;
 import vtigerGenericUtilities.JavaUtils;
 import vtigerGenericUtilities.PropertyFileUtil;
 import vtigerGenericUtilities.WebDriverUtils;
 
-public class CreateContactWithOrganizationTest {
+public class CreateContactWithOrganizationTest extends BaseClass{
 
 	//public static void main(String[] args) throws IOException, InterruptedException {
 	
-	@Test
+	@Test(groups = "smokesuite")
 	public void CreateOrgTest() throws IOException, InterruptedException {
-		 
-		WebDriver driver;
 		
-		//Step 1: Create objects of all the utilities
-		JavaUtils ju = new JavaUtils();
-		PropertyFileUtil pu = new PropertyFileUtil();
-		ExcelUtils eu = new ExcelUtils();
-		DatabaseUtils du = new DatabaseUtils();
-		WebDriverUtils wu = new WebDriverUtils();
-		
-		//Step 2: Read all the necessary data
-		String BROWSER = pu.getDataFrmProp("browser");
-		String URL = pu.getDataFrmProp("url");
-		String USERNAME = pu.getDataFrmProp("username");
-		String PASSWORD = pu.getDataFrmProp("password");
 		String ORGNAME = eu.readDataFromExcel("Contact", 4, 3)+ju.getRandomNumber();
 		String LASTNAME =eu.readDataFromExcel("Contact", 4, 2);
-		if(BROWSER.equalsIgnoreCase("chrome"))
-		{
-			WebDriverManager.chromedriver().setup();
-		    driver = new ChromeDriver();
-		    System.out.println("Chrome launched");
-		}
-		else if(BROWSER.equalsIgnoreCase("firefox"))
-		{
-			driver = new FirefoxDriver();
-			System.out.println("firefox launched");
-		}
-		else
-		{
-			System.out.println("Invalid");
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			System.out.println("Chrome launched");
-		}
-		
-		
-		wu.maximise(driver);
-		wu.waitFormDomLoad(driver);
-		driver.get(URL);
-		
-		//Step 2: login to app
-		driver.findElement(By.name("user_name")).sendKeys(USERNAME);
-		driver.findElement(By.name("user_password")).sendKeys(PASSWORD);
-		driver.findElement(By.id("submitButton")).click();
 		
 		//Step 3: navigate to organization link
 		driver.findElement(By.xpath("//a[text()='Organizations']")).click();
@@ -90,7 +50,7 @@ public class CreateContactWithOrganizationTest {
 		
 		String HEADER = driver.findElement(By.xpath("//span[@class='dvHeaderText']")).getText();
 		
-		if(HEADER.contains(ORGNAME)) 
+	/*	if(HEADER.contains(ORGNAME)) 
 		{
 			System.out.println("PASS");
 		}
@@ -98,6 +58,9 @@ public class CreateContactWithOrganizationTest {
 		{
 			System.out.println("FAIL");
 		}
+		*/
+		
+		
 		
 		driver.findElement(By.xpath("//a[text()='Contacts']")).click();
 		driver.findElement(By.xpath("//img[@title='Create Contact...']")).click();
@@ -132,9 +95,4 @@ public class CreateContactWithOrganizationTest {
 		
 	}
 	
-	@Test
-	public void DemoTest()
-	{
-		System.out.println("Demo test");
-	}
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,7 +24,8 @@ import vtigerGenericUtilities.JavaUtils;
 import vtigerGenericUtilities.PropertyFileUtil;
 import vtigerGenericUtilities.WebDriverUtils;
 
-public class CreateCntactWithOrg {
+@Listeners(vtigerGenericUtilities.ListnersImplimenttion.class)
+public class CreateCntactWithOrg { 
 	
 	private static final WebDriver WebDriver = null;
 
@@ -82,8 +85,9 @@ public class CreateCntactWithOrg {
 		
 		OrganizationInfoPage oip = new OrganizationInfoPage(driver);
 		String headerorg = oip.getHeaderTxt();
+		Assert.assertTrue(headerorg.contains(ORGNAME));
 		
-		if(headerorg.contains(ORGNAME))
+	/*	if(headerorg.contains(ORGNAME))
 		{
 			System.out.println("Pass");
 		}
@@ -91,7 +95,7 @@ public class CreateCntactWithOrg {
 		{
 			System.out.println("Fail");
 		}
-		
+	*/	
 		ho.getContactspg();
 		
 		ContactsPage cp = new ContactsPage(driver);
@@ -99,11 +103,14 @@ public class CreateCntactWithOrg {
 		
 		CreateNewContactPage cncp = new CreateNewContactPage(driver);
 		cncp.CreateNewCon(driver, LASTNAME, ORGNAME);
+		Assert.fail();
 		
 		ContactInfoPage cip = new ContactInfoPage(driver);
 		String headercon = cip.getHeaderTxt();
 		
-		if(headercon.contains(LASTNAME))
+		Assert.assertTrue(headercon.contains(LASTNAME));
+		
+	/*	if(headercon.contains(LASTNAME))
 		{
 			System.out.println("Pass");
 		}
@@ -111,7 +118,7 @@ public class CreateCntactWithOrg {
 		{
 			System.out.println("Fail");
 		}
-		
+	*/	
 		Thread.sleep(3000);
 		ho.signOut(driver);
 		driver.close();

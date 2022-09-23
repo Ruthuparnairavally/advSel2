@@ -14,6 +14,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import vtiger.ObjectRepo.HomePage;
@@ -21,7 +22,8 @@ import vtiger.ObjectRepo.Loginage;
 
 public class BaseClass {
 
-	public WebDriver driver;
+	public WebDriver driver=null;
+	public static WebDriver sdriver;
 	
 	//Step 1: Create objects of all the utilities
 	public JavaUtils ju = new JavaUtils();
@@ -31,45 +33,45 @@ public class BaseClass {
 	public WebDriverUtils wu = new WebDriverUtils();
 	public static Connection con;
 	
-	@BeforeSuite(groups="smokesuit")
+	@BeforeSuite(alwaysRun = true)
 	public void bsConfig() throws SQLException
 	{
 		con = du.connectoDb();
 		Reporter.log("----------database connected--------", true);
 	}
 	
-	@BeforeClass(groups="smokesuit")
-	public void bcConfig() throws SQLException, IOException
+	//@Parameters("browser")
+	@BeforeClass(alwaysRun = true)
+	public void bcConfig(String browser) throws SQLException, IOException
 	{
-		String BROWSER = pu.getDataFrmProp("browser");
+		//String BROWSER = pu.getDataFrmProp("browser");
 		String URL = pu.getDataFrmProp("url");
 		
-		if(BROWSER.equalsIgnoreCase("chrome"))
+		if(browser.equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
 		    driver = new ChromeDriver();
 		    System.out.println("Chrome launched");
 		}
-		else if(BROWSER.equalsIgnoreCase("firefox"))
+		/*else if(browser.equalsIgnoreCase("firefox"))
 		{
 			driver = new FirefoxDriver();
 			System.out.println("firefox launched");
-		}
+		}*/
 		else
 		{
 			System.out.println("Invalid");
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			System.out.println("Chrome launched");
 		}
 		
 		wu.maximise(driver);
 		wu.waitFormDomLoad(driver);
 		driver.get(URL);
-		Reporter.log("-------"+BROWSER+" browser launched-------", true);
+		sdriver = driver;
+		//Reporter.log("-------"+BROWSER+" browser launched-------", true);
+		
 	}
 	
-	@BeforeMethod(groups="smokesuit")
+	@BeforeMethod(alwaysRun = true)
 	public void bmConfig() throws SQLException, IOException
 	{
 		String USERNAME = pu.getDataFrmProp("username");
@@ -82,7 +84,7 @@ public class BaseClass {
 		Reporter.log("--------Logged into app --------", true);
 	}
 	
-	@AfterMethod(groups="smokesuit")
+	@AfterMethod(alwaysRun = true)
 	public void amConfig() throws SQLException
 	{
 		HomePage hp = new HomePage(driver);
@@ -90,7 +92,7 @@ public class BaseClass {
 		Reporter.log("-------Logged out-------", true);
 	}
 	
-	@AfterClass(groups="smokesuit")
+	@AfterClass(alwaysRun = true)//(groups="smokesuit")
 	public void acConfig() throws SQLException
 	{
 
@@ -98,7 +100,7 @@ public class BaseClass {
 		Reporter.log("-------browser closed-------", true);
 	}
 	
-	@AfterSuite(groups="smokesuit")
+	@AfterSuite(alwaysRun = true)
 	public void asConfig() throws SQLException
 	{
 		du.closeDb();

@@ -4,13 +4,14 @@
 
 <groups>
 	<run>
-		<include name="smokesuit"/>
+		<include name="smokesuite"/>
 	</run>
 </groups>
-  <test thread-count="5" name="Test">
+  <test thread-count="5" name="Test1">
     <classes>
       <class name="vtiger.Contacts.CreateContactWithOrganizationTest"/>
        <class name="vtiger.OrgTests.CreateOrgWithIndustry"/>
     </classes>
   </test> <!-- Test -->
+ 
 </suite> <!-- Suite -->

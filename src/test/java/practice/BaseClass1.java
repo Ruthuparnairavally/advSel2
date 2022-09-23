@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class BaseClass {
+public class BaseClass1 {
 
 	@BeforeSuite
 	public void bsConfig()

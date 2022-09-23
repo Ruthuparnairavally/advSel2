@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Sep 21 18:50:16 IST 2022</td>
+<td>Started on:</td><td>Fri Sep 23 20:44:49 IST 2022</td>
 </tr>
-<tr><td>Total time:</td><td>3 seconds (3671 ms)</td>
+<tr><td>Total time:</td><td>72 seconds (72661 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,19 +75,24 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='vtiger.Contacts.CreateContactWithOrganizationTest.CreateOrgTest()'><b>CreateOrgTest</b><br>Test class: vtiger.Contacts.CreateContactWithOrganizationTest</td>
-<td><div><pre>io.github.bonigarcia.wdm.config.WebDriverManagerException: io.github.bonigarcia.wdm.config.WebDriverManagerException: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1140)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.fallback(WebDriverManager.java:1156)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1137)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1130)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:337)
-	at vtiger.Contacts.CreateContactWithOrganizationTest.CreateOrgTest(CreateContactWithOrganizationTest.java:53)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+<td title='vtiger.Contacts.CreateCntactWithOrg.createOrgTest()'><b>createOrgTest</b><br>Test class: vtiger.Contacts.CreateCntactWithOrg<br/>
+<a href="#Output-1528923159" onClick='toggleBox("Output-1528923159", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1528923159" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1528923159">
+createOrgTest on test start<br/>
+createOrgTest onTestFailure<br/>
+java.lang.AssertionError: nullon Test Failure<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at vtiger.Contacts.CreateCntactWithOrg.createOrgTest(CreateCntactWithOrg.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
 	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
 	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
@@ -112,55 +117,15 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: io.github.bonigarcia.wdm.config.WebDriverManagerException: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromXml(WebDriverManager.java:1286)
-	at io.github.bonigarcia.wdm.managers.ChromeDriverManager.getDriverUrls(ChromeDriverManager.java:105)
-	at io.github.bonigarcia.wdm.WebDriverManager.createUrlHandler(WebDriverManager.java:1161)
-	at io.github.bonigarcia.wdm.WebDriverManager.download(WebDriverManager.java:1009)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:927)
-	... 33 more
-Caused by: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:948)
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1628)
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1494)
-	at org.apache.hc.client5.http.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:43)
-	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:118)
-	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:409)
-	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
-	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
-	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:135)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:172)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:93)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:128)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:116)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:178)
-	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:75)
-	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:89)
-	at io.github.bonigarcia.wdm.online.HttpClient.execute(HttpClient.java:158)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromXml(WebDriverManager.java:1271)
-	... 37 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace1466558382", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1466558382'><pre>io.github.bonigarcia.wdm.config.WebDriverManagerException: io.github.bonigarcia.wdm.config.WebDriverManagerException: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1140)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.fallback(WebDriverManager.java:1156)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1137)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:1130)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:933)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:337)
-	at vtiger.Contacts.CreateContactWithOrganizationTest.CreateOrgTest(CreateContactWithOrganizationTest.java:53)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1528923159", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1528923159'><pre>java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at vtiger.Contacts.CreateCntactWithOrg.createOrgTest(CreateCntactWithOrg.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
 	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
 	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
@@ -185,58 +150,9 @@ Caused by: java.net.UnknownHostException: chromedriver.storage.googleapis.com
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: io.github.bonigarcia.wdm.config.WebDriverManagerException: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromXml(WebDriverManager.java:1286)
-	at io.github.bonigarcia.wdm.managers.ChromeDriverManager.getDriverUrls(ChromeDriverManager.java:105)
-	at io.github.bonigarcia.wdm.WebDriverManager.createUrlHandler(WebDriverManager.java:1161)
-	at io.github.bonigarcia.wdm.WebDriverManager.download(WebDriverManager.java:1009)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:927)
-	... 33 more
-Caused by: java.net.UnknownHostException: chromedriver.storage.googleapis.com
-	at java.base/java.net.InetAddress$CachedAddresses.get(InetAddress.java:948)
-	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1628)
-	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1494)
-	at org.apache.hc.client5.http.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:43)
-	at org.apache.hc.client5.http.impl.io.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:118)
-	at org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:409)
-	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:164)
-	at org.apache.hc.client5.http.impl.classic.InternalExecRuntime.connectEndpoint(InternalExecRuntime.java:174)
-	at org.apache.hc.client5.http.impl.classic.ConnectExec.execute(ConnectExec.java:135)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.ProtocolExec.execute(ProtocolExec.java:172)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.HttpRequestRetryExec.execute(HttpRequestRetryExec.java:93)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.ContentCompressionExec.execute(ContentCompressionExec.java:128)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement$1.proceed(ExecChainElement.java:57)
-	at org.apache.hc.client5.http.impl.classic.RedirectExec.execute(RedirectExec.java:116)
-	at org.apache.hc.client5.http.impl.classic.ExecChainElement.execute(ExecChainElement.java:51)
-	at org.apache.hc.client5.http.impl.classic.InternalHttpClient.doExecute(InternalHttpClient.java:178)
-	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:75)
-	at org.apache.hc.client5.http.impl.classic.CloseableHttpClient.execute(CloseableHttpClient.java:89)
-	at io.github.bonigarcia.wdm.online.HttpClient.execute(HttpClient.java:158)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromXml(WebDriverManager.java:1271)
-	... 37 more
 </pre></div></td>
-<td>3</td>
-<td>vtiger.Contacts.CreateContactWithOrganizationTest@3d51f06e</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='vtiger.Contacts.CreateContactWithOrganizationTest.DemoTest()'><b>DemoTest</b><br>Test class: vtiger.Contacts.CreateContactWithOrganizationTest</td>
-<td></td>
-<td>0</td>
-<td>vtiger.Contacts.CreateContactWithOrganizationTest@3d51f06e</td></tr>
+<td>72</td>
+<td>vtiger.Contacts.CreateCntactWithOrg@429bffaa</td></tr>
 </table><p>
 </body>
 </html>
