@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ import vtiger.ObjectRepo.HomePage;
 import vtiger.ObjectRepo.Loginage;
 import vtiger.ObjectRepo.OrganizationInfoPage;
 import vtiger.ObjectRepo.OrganizationPage;
+import vtigerGenericUtilities.BaseClass;
 import vtigerGenericUtilities.DatabaseUtils;
 import vtigerGenericUtilities.ExcelUtils;
 import vtigerGenericUtilities.JavaUtils;
@@ -25,105 +27,72 @@ import vtigerGenericUtilities.PropertyFileUtil;
 import vtigerGenericUtilities.WebDriverUtils;
 
 @Listeners(vtigerGenericUtilities.ListnersImplimenttion.class)
-public class CreateCntactWithOrg { 
-	
-	private static final WebDriver WebDriver = null;
+public class CreateCntactWithOrg extends BaseClass { 
 
-	@Test
-	public void createOrgTest() throws IOException, InterruptedException {
-		WebDriver driver;
-		
-		//Step 1: Create objects of all the utilities
-		JavaUtils ju = new JavaUtils();
-		PropertyFileUtil pu = new PropertyFileUtil();
-		ExcelUtils eu = new ExcelUtils();
-		DatabaseUtils du = new DatabaseUtils();
-		WebDriverUtils wu = new WebDriverUtils();
-		
-		//Step 2: Read all the necessary data
-		String BROWSER = pu.getDataFrmProp("browser");
-		String URL = pu.getDataFrmProp("url");
-		String USERNAME = pu.getDataFrmProp("username");
-		String PASSWORD = pu.getDataFrmProp("password");
+	@Test(groups = {"SmokeSuite","RegressionSuite"})
+	public void CreateContactWithOrgTest() throws IOException {
+
 		String ORGNAME = eu.readDataFromExcel("Contact", 4, 3)+ju.getRandomNumber();
-		String LASTNAME =eu.readDataFromExcel("Contact", 4, 2);
-		if(BROWSER.equalsIgnoreCase("chrome"))
-		{
-			WebDriverManager.chromedriver().setup();
-		    driver = new ChromeDriver();
-		    System.out.println("Chrome launched");
-		}
-		else if(BROWSER.equalsIgnoreCase("firefox"))
-		{
-			driver = new FirefoxDriver();
-			System.out.println("firefox launched");
-		}
-		else
-		{
-			System.out.println("Invalid");
-			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
-			System.out.println("Chrome launched");
-		}
+		String LASTNAME = eu.readDataFromExcel("Contact", 4, 2);
 		
+		//Navigate to Organizations link
+		HomePage hp = new HomePage(driver);
+		hp.getOrgnizationpg();
+		Reporter.log("Click on Organizations Link",true); //low level reporting
 		
-		wu.maximise(driver);
-		wu.waitFormDomLoad(driver);
-		driver.get(URL);
-		
-		Loginage lp = new Loginage(driver);
-		lp.login(USERNAME, PASSWORD);
-		
-		HomePage ho = new HomePage(driver);
-		ho.getOrgnizationpg();
-		
+		//click on create organization look up image
 		OrganizationPage op = new OrganizationPage(driver);
 		op.CreateOrg();
+		Reporter.log("Click on create Organizations look up image",true);
 		
+		//Create organization with mandatory fields and save
 		CreateNewOrganizationPage cnp = new CreateNewOrganizationPage(driver);
 		cnp.createNewOrg(ORGNAME);
+		Reporter.log("new organization created",true);
 		
+		//Validate for Organization
 		OrganizationInfoPage oip = new OrganizationInfoPage(driver);
-		String headerorg = oip.getHeaderTxt();
-		Assert.assertTrue(headerorg.contains(ORGNAME));
+		String orgHeader = oip.getHeaderTxt();
 		
-	/*	if(headerorg.contains(ORGNAME))
-		{
-			System.out.println("Pass");
-		}
-		else
-		{
-			System.out.println("Fail");
-		}
-	*/	
-		ho.getContactspg();
+		System.out.println(orgHeader);  //true
+		Assert.assertEquals(orgHeader.contains(ORGNAME), true); 
 		
-		ContactsPage cp = new ContactsPage(driver);
-		cp.CreateCon();
-		
-		CreateNewContactPage cncp = new CreateNewContactPage(driver);
-		cncp.CreateNewCon(driver, LASTNAME, ORGNAME);
+		//Navigate to contacts link
+		hp.getContactspg();
+		Reporter.log("Click on contacts Link",true);
 		Assert.fail();
 		
-		ContactInfoPage cip = new ContactInfoPage(driver);
-		String headercon = cip.getHeaderTxt();
+		//Click on create contact look up image
+		ContactsPage cp = new ContactsPage(driver);
+		cp.CreateCon();
+		Reporter.log("Click on create contacts Lookup image",true);
 		
-		Assert.assertTrue(headercon.contains(LASTNAME));
+		//Create contact with Organization and save
+		CreateNewContactPage cnc=new CreateNewContactPage(driver);
+		cnc.CreateNewCon(driver, LASTNAME, ORGNAME);
+		Reporter.log("new contact created with organization ",true);
 		
-	/*	if(headercon.contains(LASTNAME))
-		{
-			System.out.println("Pass");
-		}
-		else
-		{
-			System.out.println("Fail");
-		}
-	*/	
-		Thread.sleep(3000);
-		ho.signOut(driver);
-		driver.close();
-		
+		//validate for contacts
+	    ContactInfoPage cip = new ContactInfoPage(driver);
+	    String contactHeader = cip.getHeaderTxt();
+		System.out.println(contactHeader);
+		Assert.assertTrue(contactHeader.contains(LASTNAME));
+		                        //true
 		
 	}
 	
+	/*
+	@Test(groups = "RegressionSuite")
+	public void demoRegressionTest()
+	{
+		System.out.println("this is regression");
+		
+		HomePage hp = new HomePage(driver);
+		hp.getOrgnizationpg();;
+		Reporter.log("Click on Organizations Link",true);
+		Assert.fail();
+		
+		
+	}
+	*/
 }

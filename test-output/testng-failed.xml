@@ -5,7 +5,13 @@
     <classes>
       <class name="vtiger.Contacts.CreateCntactWithOrg">
         <methods>
-          <include name="createOrgTest"/>
+          <include name="bcConfig"/>
+          <include name="amConfig"/>
+          <include name="CreateContactWithOrgTest"/>
+          <include name="bsConfig"/>
+          <include name="asConfig"/>
+          <include name="acConfig"/>
+          <include name="bmConfig"/>
         </methods>
       </class> <!-- vtiger.Contacts.CreateCntactWithOrg -->
     </classes>

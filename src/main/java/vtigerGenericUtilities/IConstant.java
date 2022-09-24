@@ -7,5 +7,6 @@ public interface IConstant {
 	String dburl = "jdbc:mysql://localhost:3306/advsel";
 	String dbun = "root";
 	String dpass = "root";
-	String photo="./photos/";
+	String photo="./Screenshots/";
+	String reports="./ExtentReports/";
 }

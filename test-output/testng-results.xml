@@ -2,24 +2,75 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
     <line>
+      <![CDATA[----------database connected--------]]>
+    </line>
+    <line>
       <![CDATA[execution started]]>
     </line>
     <line>
-      <![CDATA[createOrgTest on test start]]>
+      <![CDATA[browser launched]]>
     </line>
     <line>
-      <![CDATA[createOrgTest onTestFailure]]>
+      <![CDATA[--------Logged into app --------]]>
     </line>
     <line>
-      <![CDATA[java.lang.AssertionError: nullon Test Failure]]>
+      <![CDATA[Click on Organizations Link]]>
+    </line>
+    <line>
+      <![CDATA[Click on create Organizations look up image]]>
+    </line>
+    <line>
+      <![CDATA[new organization created]]>
+    </line>
+    <line>
+      <![CDATA[Click on contacts Link]]>
+    </line>
+    <line>
+      <![CDATA[-------Logged out-------]]>
+    </line>
+    <line>
+      <![CDATA[-------browser closed-------]]>
+    </line>
+    <line>
+      <![CDATA[execution completed]]>
+    </line>
+    <line>
+      <![CDATA[----------database closed--------]]>
     </line>
   </reporter-output>
-  <suite started-at="2022-09-23T20:44:49 IST" name="Default suite" finished-at="2022-09-23T20:46:02 IST" duration-ms="72661">
+  <suite started-at="2022-09-24T16:32:45 IST" name="Default suite" finished-at="2022-09-24T16:33:22 IST" duration-ms="37313">
     <groups>
+      <group name="RegressionSuite">
+        <method signature="CreateCntactWithOrg.CreateContactWithOrgTest()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" name="CreateContactWithOrgTest" class="vtiger.Contacts.CreateCntactWithOrg"/>
+      </group> <!-- RegressionSuite -->
+      <group name="SmokeSuite">
+        <method signature="CreateCntactWithOrg.CreateContactWithOrgTest()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" name="CreateContactWithOrgTest" class="vtiger.Contacts.CreateCntactWithOrg"/>
+      </group> <!-- SmokeSuite -->
     </groups>
-    <test started-at="2022-09-23T20:44:49 IST" name="Default test" finished-at="2022-09-23T20:46:02 IST" duration-ms="72661">
+    <test started-at="2022-09-24T16:32:45 IST" name="Default test" finished-at="2022-09-24T16:33:22 IST" duration-ms="37313">
       <class name="vtiger.Contacts.CreateCntactWithOrg">
-        <test-method signature="createOrgTest()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@429bffaa]" started-at="2022-09-23T20:44:49 IST" name="createOrgTest" finished-at="2022-09-23T20:46:02 IST" duration-ms="72567" status="FAIL">
+        <test-method is-config="true" signature="bsConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:32:45 IST" name="bsConfig" finished-at="2022-09-24T16:32:45 IST" duration-ms="15" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[----------database connected--------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- bsConfig -->
+        <test-method is-config="true" signature="bcConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:32:46 IST" name="bcConfig" finished-at="2022-09-24T16:32:55 IST" duration-ms="9086" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[browser launched]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- bcConfig -->
+        <test-method is-config="true" signature="bmConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:32:55 IST" name="bmConfig" finished-at="2022-09-24T16:33:01 IST" duration-ms="6019" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[--------Logged into app --------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- bmConfig -->
+        <test-method signature="CreateContactWithOrgTest()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:33:01 IST" name="CreateContactWithOrgTest" finished-at="2022-09-24T16:33:22 IST" duration-ms="21021" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[null]]>
@@ -28,7 +79,7 @@
               <![CDATA[java.lang.AssertionError: null
 at org.testng.Assert.fail(Assert.java:99)
 at org.testng.Assert.fail(Assert.java:106)
-at vtiger.Contacts.CreateCntactWithOrg.createOrgTest(CreateCntactWithOrg.java:106)
+at vtiger.Contacts.CreateCntactWithOrg.CreateContactWithOrgTest(CreateCntactWithOrg.java:63)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -62,16 +113,40 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[createOrgTest on test start]]>
+              <![CDATA[Click on Organizations Link]]>
             </line>
             <line>
-              <![CDATA[createOrgTest onTestFailure]]>
+              <![CDATA[Click on create Organizations look up image]]>
             </line>
             <line>
-              <![CDATA[java.lang.AssertionError: nullon Test Failure]]>
+              <![CDATA[new organization created]]>
+            </line>
+            <line>
+              <![CDATA[Click on contacts Link]]>
             </line>
           </reporter-output>
-        </test-method> <!-- createOrgTest -->
+        </test-method> <!-- CreateContactWithOrgTest -->
+        <test-method is-config="true" signature="amConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:33:22 IST" name="amConfig" finished-at="2022-09-24T16:33:22 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[-------Logged out-------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- amConfig -->
+        <test-method is-config="true" signature="acConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:33:22 IST" name="acConfig" finished-at="2022-09-24T16:33:22 IST" duration-ms="160" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[-------browser closed-------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- acConfig -->
+        <test-method is-config="true" signature="asConfig()[pri:0, instance:vtiger.Contacts.CreateCntactWithOrg@614ca7df]" started-at="2022-09-24T16:33:23 IST" name="asConfig" finished-at="2022-09-24T16:33:23 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[----------database closed--------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- asConfig -->
       </class> <!-- vtiger.Contacts.CreateCntactWithOrg -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

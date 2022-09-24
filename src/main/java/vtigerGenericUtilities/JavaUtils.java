@@ -34,8 +34,8 @@ public class JavaUtils {
 		String date = s[2];
 		String mon = s[1];
 		String year = s[5];
-		String time = s[3].replaceAll("-", ":");
-		String formatdate = date+" "+mon+" "+year+" "+time;
+		String time = s[3].replaceAll(":", "-");
+		String formatdate = date+"-"+mon+"-"+year+"-"+time;
 		return formatdate;
 	}
 }

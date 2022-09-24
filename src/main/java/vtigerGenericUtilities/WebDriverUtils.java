@@ -292,14 +292,7 @@ public class WebDriverUtils {
 	 * @throws IOException  
 	 */
 	
-	public String takeScreenshot(WebDriver driver, String name) throws IOException
-	{
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File src = ts.getScreenshotAs(OutputType.FILE);
-		File dest = new File("./photos/"+name+".png");
-		FileUtils.copyFile(src, dest);
-		return dest.getAbsolutePath();
-	}
+
 	
 	/**
 	 * this method will scroll window by 500 units

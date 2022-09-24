@@ -21,9 +21,6 @@ import vtiger.ObjectRepo.HomePage;
 import vtiger.ObjectRepo.Loginage;
 
 public class BaseClass {
-
-	public WebDriver driver=null;
-	public static WebDriver sdriver;
 	
 	//Step 1: Create objects of all the utilities
 	public JavaUtils ju = new JavaUtils();
@@ -32,32 +29,35 @@ public class BaseClass {
 	public DatabaseUtils du = new DatabaseUtils();
 	public WebDriverUtils wu = new WebDriverUtils();
 	public static Connection con;
+	public WebDriver driver;
+	public static WebDriver sdriver;
 	
 	@BeforeSuite(alwaysRun = true)
 	public void bsConfig() throws SQLException
 	{
-		con = du.connectoDb();
+		
+		//con = du.connectoDb();
 		Reporter.log("----------database connected--------", true);
 	}
 	
 	//@Parameters("browser")
 	@BeforeClass(alwaysRun = true)
-	public void bcConfig(String browser) throws SQLException, IOException
+	public void bcConfig(/*String browser*/) throws SQLException, IOException
 	{
-		//String BROWSER = pu.getDataFrmProp("browser");
+		String BROWSER = pu.getDataFrmProp("browser");
 		String URL = pu.getDataFrmProp("url");
 		
-		if(browser.equalsIgnoreCase("chrome"))
+		if(BROWSER.equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
 		    driver = new ChromeDriver();
-		    System.out.println("Chrome launched");
+		    Reporter.log("browser launched",true);
 		}
-		/*else if(browser.equalsIgnoreCase("firefox"))
+		else if(BROWSER.equalsIgnoreCase("firefox"))
 		{
 			driver = new FirefoxDriver();
-			System.out.println("firefox launched");
-		}*/
+			Reporter.log("browser launched",true);
+		}
 		else
 		{
 			System.out.println("Invalid");
@@ -67,6 +67,7 @@ public class BaseClass {
 		wu.waitFormDomLoad(driver);
 		driver.get(URL);
 		sdriver = driver;
+		System.out.println("Driver Assigned");
 		//Reporter.log("-------"+BROWSER+" browser launched-------", true);
 		
 	}
@@ -74,9 +75,11 @@ public class BaseClass {
 	@BeforeMethod(alwaysRun = true)
 	public void bmConfig() throws SQLException, IOException
 	{
+		
+		
 		String USERNAME = pu.getDataFrmProp("username");
 		String PASSWORD = pu.getDataFrmProp("password");
-		
+		System.out.println(USERNAME+" "+PASSWORD);
 	
 		Loginage lp = new Loginage(driver);
 		lp.login(USERNAME, PASSWORD);
@@ -88,11 +91,11 @@ public class BaseClass {
 	public void amConfig() throws SQLException
 	{
 		HomePage hp = new HomePage(driver);
-		hp.signOut(driver);
+		//hp.signOut(driver);
 		Reporter.log("-------Logged out-------", true);
 	}
 	
-	@AfterClass(alwaysRun = true)//(groups="smokesuit")
+	@AfterClass//(alwaysRun = true)//(groups="smokesuit")
 	public void acConfig() throws SQLException
 	{
 
@@ -103,7 +106,7 @@ public class BaseClass {
 	@AfterSuite(alwaysRun = true)
 	public void asConfig() throws SQLException
 	{
-		du.closeDb();
+		//du.closeDb();
 		Reporter.log("----------database closed--------", true);
 	}
 }
