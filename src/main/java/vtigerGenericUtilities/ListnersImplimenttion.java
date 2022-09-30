@@ -53,7 +53,8 @@ public class ListnersImplimenttion implements ITestListener{
 		//String n = name.trim();
 	
 			try {
-				po.takeScreenShot(BaseClass.sdriver, name);
+				String path = po.takeScreenShot(BaseClass.sdriver, name);
+				test.addScreenCaptureFromPath(path);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -62,6 +63,7 @@ public class ListnersImplimenttion implements ITestListener{
 		
 		//Reporter.log(methodname+" onTestFailure",true);
 		//Reporter.log(result.getThrowable().toString()+"on Test Failure",true);
+		
 		test.log(Status.FAIL, method+" ---FAIL");
 		test.log(Status.FAIL, result.getThrowable()+" ---FAIL");
 		
