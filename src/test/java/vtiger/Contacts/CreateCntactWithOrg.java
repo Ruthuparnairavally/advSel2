@@ -60,7 +60,7 @@ public class CreateCntactWithOrg extends BaseClass {
 		//Navigate to contacts link
 		hp.getContactspg();
 		Reporter.log("Click on contacts Link",true);
-		Assert.fail();
+		//Assert.fail();
 		
 		//Click on create contact look up image
 		ContactsPage cp = new ContactsPage(driver);

@@ -4,7 +4,10 @@
   <artifactId>com</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-   <build>
+  <profiles>
+  	<profile>
+  		<id>SmokeSuite</id>
+  		 <build>
 	  <plugins>
 	      <plugin>
 	        <groupId>org.apache.maven.plugins</groupId>
@@ -12,12 +15,37 @@
 	        <version>3.0.0-M7</version>
 	        <configuration>
 	          <suiteXmlFiles>
-	            <suiteXmlFile>testng.xml</suiteXmlFile>
+	            <suiteXmlFile>testngSmokeSuit.xml</suiteXmlFile>
 	          </suiteXmlFiles>
 	        </configuration>
 	      </plugin>
 	</plugins>
    </build>
+  	</profile>
+  	
+  	<profile>
+  		<id>Demofile</id>
+  		 <build>
+	  <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>3.0.0-M7</version>
+	        <configuration>
+	          <suiteXmlFiles>
+	            <suiteXmlFile>vtconPackage.xml</suiteXmlFile>
+	          </suiteXmlFiles>
+	        </configuration>
+	      </plugin>
+	</plugins>
+   </build>
+  	</profile>
+  	
+  </profiles>
+  
+   
+  	
+ 
   
  <dependencies>
   <!-- this dependency is used for automation-->
